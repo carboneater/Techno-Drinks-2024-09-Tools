@@ -7,7 +7,7 @@ highlighter: shiki
 lineNumbers: true
 drawings:
   persist: false
-transition: slide-left
+transition: none
 mdc: true
 ---
 
@@ -33,21 +33,27 @@ hideInToc: true
 <Toc minDepth="1" maxDepth="1"></Toc>
 
 ---
-transition: slide-up
+layout: section
 ---
 
-# Methodologie
+# Objectifs
+
+---
+
+# Méthodologie
 
 - F/LOSS
 - Utile
+- Facile
 
 ---
+layout: center
 level: 2
 ---
 
 # Disclaimer
 
-YMMV
+## YMMV
 
 ---
 layout: section
@@ -68,7 +74,6 @@ level: 2
 
 ---
 level: 2
-transition: slide-up
 ---
 
 # EditorConfig
@@ -91,7 +96,6 @@ trim_trailing_whitespace = true
 
 ---
 level: 3
-transition: slide-up
 ---
 ## Quelques exceptions
 
@@ -114,7 +118,7 @@ level: 3
 
 C'est cool, sauf qu'en Python...
 ```diff
-   if true:
+   if something:
         do_something()
 -        do_something_else()
 +   do_something_else()
@@ -152,26 +156,64 @@ level: 2
 
 # Zod: Input Parsing, Typing & Validation
 
-```ts twoslash
+```ts {all|3-6|8-13|all} twoslash
 import {z} from 'zod'
 
-// Describe Object
 const schema = z.object({
   id: z.number().min(1),
   name: z.string()
 })
 
-console.log(schema.parse({
+const safeInputs = schema.parse({
   id: 2,
   name: 'test',
   malicious: 'EICAR!'
-}))
+})
 /* { id: 2, name: 'test'} */
 ```
 
 ---
+layout: section
+---
 
-## Conventional Commits
+# SCM/CI
+
+---
+layout: two-cols-header
+level: 2
+---
+
+# Validations
+
+::left::
+
+- Language Server (TS)
+- Linter (ESLint)
+- Formatter (Prettier)
+
+::right::
+
+- Intégration IDE
+- Documentation
+- Exécution Automatique
+- Performances
+- Intégration CI
+
+---
+level: 2
+---
+
+# Tests!
+
+- Utilisez un Framework!
+- Coverage
+- Mutation Testing
+
+---
+level: 2
+---
+
+# Conventional Commits
 
 |Prefix|Release|
 |---|---|
@@ -186,25 +228,53 @@ console.log(schema.parse({
 
 https://www.conventionalcommits.org/en/v1.0.0/
 
---
-
-## Conventional Commits
-
-- [Commitizen](https://commitizen.github.io)
-
-- [Commitlint](https://commitlint.js.org)
-
 ---
-layout: section
+level: 2
 ---
 
-# Observabilite
+# Conventional Commits
+
+- [Commitizen](https://commitizen.github.io): Plugin IDE
+
+- [Commitlint](https://commitlint.js.org): Validation CI
 
 ---
 level: 2
 ---
 
-# La tente Grafana
+# CI/CT
+
+- Évitez les dépendances
+  - Systèmes
+  - Externes
+- "Build From Scratch"
+  - Reproductibilité
+- Lancez les services à l'interne des pipelines
+
+---
+level: 2
+---
+
+# Semantic-Release
+
+- Version
+- Release Notes
+- CHANGELOG
+- Package
+- Tag
+- Et bien d'autres!
+
+---
+layout: section
+---
+
+# Observabilité
+
+---
+level: 2
+---
+
+# La grande tente Grafana
 
 - Dashboards: Grafana
 - Logs: Loki
@@ -219,13 +289,29 @@ level: 2
 
 - Probablement disponible dans votre language
 - Contient de nombreuses instrumentations automatiques
-- Facile a integrer
+- Facile à intégrer
 
 ---
 layout: section
 ---
 
-# Presentation
+# Maintenance
+
+---
+level: 2
+---
+
+# Maintenance
+
+- Renovate
+- Dependabot
+- OpenRewrite
+
+---
+layout: section
+---
+
+# Présentation
 
 ---
 layout: two-cols-header
@@ -256,7 +342,8 @@ layout: section
 
 # Conclusion
 
-Il y a probablement deja un outil pour faire ca
+Il y a probablement deja un outil pour faire ca!
 
-Embrassez votre cote paresseux!
+Embrassez votre côté paresseux!
 
+Slides: https://github.com/carboneater/Techno-Drinks-2024-09-Tools
